@@ -13,8 +13,8 @@ describe('associations', () => {
             name: 'user_id',
           },
         ],
-        []
-      )
+        [],
+      ),
     ).toEqual([
       {
         from: 'users',
@@ -45,8 +45,8 @@ describe('associations', () => {
             table: 'users',
             from: 'UserId',
           },
-        ]
-      )
+        ],
+      ),
     ).toEqual([
       {
         from: 'users',
@@ -81,8 +81,8 @@ describe('join associations', () => {
             name: 'user_id',
           },
         ],
-        []
-      )
+        [],
+      ),
     ).toEqual([
       {
         from: 'posts',
@@ -121,8 +121,8 @@ describe('join associations', () => {
             table: 'users',
             from: 'user_id',
           },
-        ]
-      )
+        ],
+      ),
     ).toEqual([
       {
         from: 'posts',

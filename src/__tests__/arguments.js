@@ -32,7 +32,7 @@ const model = db.define(
       allowNull: false,
     },
   },
-  { timestamps: false }
+  { timestamps: false },
 );
 
 const model2 = db.define(
@@ -51,7 +51,7 @@ const model2 = db.define(
       allowNull: false,
     },
   },
-  { timestamps: false }
+  { timestamps: false },
 );
 
 describe('getPkField', () => {
@@ -101,7 +101,7 @@ describe('getPkField', () => {
           primaryKey: true,
         },
       },
-      { timestamps: false }
+      { timestamps: false },
     );
 
     const categories = db.define(
@@ -112,7 +112,7 @@ describe('getPkField', () => {
           primaryKey: true,
         },
       },
-      { timestamps: false }
+      { timestamps: false },
     );
 
     const args = makePolyArgs(posts, categories);

@@ -1,5 +1,5 @@
 import { plural, singular } from 'pluralize';
-import camelcase from 'camelcase';
+import camelcase from './camelcase';
 
 export const isJoinTable = (tableName, tableList) => {
   const sides = tableName.split('_').map(plural);
@@ -13,11 +13,11 @@ export const isJoinTable = (tableName, tableList) => {
   return tableList.includes(one) && tableList.includes(two);
 };
 
-export const formatTypeName = name => {
+export const formatTypeName = (name) => {
   return pascalCase(singular(name));
 };
 
-export const pascalCase = string => {
+export const pascalCase = (string) => {
   const cameled = camelcase(string);
   return cameled.substr(0, 1).toUpperCase() + cameled.substr(1);
 };

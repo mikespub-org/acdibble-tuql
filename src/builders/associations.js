@@ -39,9 +39,9 @@ export const joinTableAssociations = (table, info, foreignKeys) => {
   }
 
   const [a, b] = table.split('_').map(plural);
-  const keys = info.map(column => column.name);
-  const [aKey] = keys.filter(key => key.indexOf(singular(a)) === 0);
-  const [bKey] = keys.filter(key => key.indexOf(singular(b)) === 0);
+  const keys = info.map((column) => column.name);
+  const [aKey] = keys.filter((key) => key.indexOf(singular(a)) === 0);
+  const [bKey] = keys.filter((key) => key.indexOf(singular(b)) === 0);
 
   return formJoinTableAssociations(a, b, aKey, bKey, table);
 };
@@ -75,7 +75,7 @@ export const tableAssociations = (table, info, foreignKeys) => {
     .filter(({ name }) => {
       return FK_SUFFIX_REGEX.test(name);
     })
-    .forEach(column => {
+    .forEach((column) => {
       const root = column.name.replace(FK_SUFFIX_REGEX, '');
 
       associations.push({

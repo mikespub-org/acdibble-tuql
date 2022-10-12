@@ -1,7 +1,7 @@
 import { TEXT, INTEGER, REAL, NUMERIC, BLOB } from 'sequelize';
 import { formatFieldName } from '../utils';
 
-const transformColumnToType = column => {
+const transformColumnToType = (column) => {
   const c = column.toLowerCase();
 
   if (c.includes('int')) {
@@ -29,7 +29,7 @@ const transformColumnToType = column => {
   return BLOB;
 };
 
-export default columns => {
+export default (columns) => {
   return columns.reduce((acc, column) => {
     acc[formatFieldName(column.name)] = {
       type: transformColumnToType(column.type),

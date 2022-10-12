@@ -39,7 +39,7 @@ const GenericResponseType = new GraphQLObjectType({
   },
 });
 
-export const buildSchemaFromDatabase = databaseFile => {
+export const buildSchemaFromDatabase = (databaseFile) => {
   return new Promise(async (resolve, reject) => {
     const db = new Sequelize({
       dialect: 'sqlite',
@@ -51,7 +51,7 @@ export const buildSchemaFromDatabase = databaseFile => {
   });
 };
 
-export const buildSchemaFromInfile = infile => {
+export const buildSchemaFromInfile = (infile) => {
   return new Promise(async (resolve, reject) => {
     const db = new Sequelize({
       dialect: 'sqlite',
@@ -63,7 +63,7 @@ export const buildSchemaFromInfile = infile => {
     const statements = contents
       .toString()
       .split(/;(\r?\n|\r)/g)
-      .filter(s => s.trim().length);
+      .filter((s) => s.trim().length);
 
     for (let stmt of statements) {
       await db.query(stmt);
@@ -73,14 +73,14 @@ export const buildSchemaFromInfile = infile => {
   });
 };
 
-const build = db => {
+const build = (db) => {
   return new Promise(async (resolve, reject) => {
     const models = {};
     let associations = [];
 
     const rows = await db.query(
       'SELECT name FROM sqlite_master WHERE type = "table" AND name NOT LIKE "sqlite_%"',
-      { type: QueryTypes.SELECT }
+      { type: QueryTypes.SELECT },
     );
 
     const tables = rows.map(({ name }) => name);
@@ -91,7 +91,7 @@ const build = db => {
 
       if (isJoinTable(table, tables)) {
         associations = associations.concat(
-          joinTableAssociations(table, info, foreignKeys)
+          joinTableAssociations(table, info, foreignKeys),
         );
       } else {
         models[table] = db.define(table, createDefinitions(info, table), {
@@ -100,7 +100,7 @@ const build = db => {
         });
 
         associations = associations.concat(
-          tableAssociations(table, info, foreignKeys)
+          tableAssociations(table, info, foreignKeys),
         );
       }
     }
@@ -116,7 +116,7 @@ const build = db => {
     const mutations = {};
     const queries = {};
 
-    Object.keys(models).forEach(key => {
+    Object.keys(models).forEach((key) => {
       const model = models[key];
       const fieldAssociations = {
         hasMany: associations
@@ -130,7 +130,7 @@ const build = db => {
         belongsToMany: associations
           .filter(({ type }) => type === 'belongsToMany')
           .map(({ from, to }) => [from, to])
-          .filter(sides => sides.includes(key)),
+          .filter((sides) => sides.includes(key)),
       };
 
       const type = new GraphQLObjectType({
@@ -138,7 +138,7 @@ const build = db => {
         fields() {
           const fields = attributeFields(model);
 
-          fieldAssociations.hasMany.forEach(associatedModel => {
+          fieldAssociations.hasMany.forEach((associatedModel) => {
             fields[formatFieldName(associatedModel.name)] = {
               type: new GraphQLList(types[associatedModel.name]),
               args: defaultListArgs(model[associatedModel.name]),
@@ -146,7 +146,7 @@ const build = db => {
             };
           });
 
-          fieldAssociations.belongsTo.forEach(associatedModel => {
+          fieldAssociations.belongsTo.forEach((associatedModel) => {
             const fieldName = singular(associatedModel.name);
             fields[formatFieldName(fieldName)] = {
               type: types[associatedModel.name],
@@ -154,8 +154,8 @@ const build = db => {
             };
           });
 
-          fieldAssociations.belongsToMany.forEach(sides => {
-            const [other] = sides.filter(side => side !== model.name);
+          fieldAssociations.belongsToMany.forEach((sides) => {
+            const [other] = sides.filter((side) => side !== model.name);
             fields[formatFieldName(other)] = {
               type: new GraphQLList(types[other]),
               resolve: resolver(model[other]),
@@ -227,11 +227,11 @@ const build = db => {
         },
       };
 
-      fieldAssociations.belongsToMany.forEach(sides => {
-        const [other] = sides.filter(side => side !== model.name);
+      fieldAssociations.belongsToMany.forEach((sides) => {
+        const [other] = sides.filter((side) => side !== model.name);
         const nameBits = [formatTypeName(model.name), formatTypeName(other)];
 
-        ['add', 'remove'].forEach(prefix => {
+        ['add', 'remove'].forEach((prefix) => {
           const connector = prefix === 'add' ? 'To' : 'From';
           const name = `${prefix}${nameBits.join(connector)}`;
           mutations[name] = {
@@ -243,7 +243,7 @@ const build = db => {
 
               const thingOne = await model.findByPk(values[key]);
               const thingTwo = await models[other].findByPk(
-                values[otherArgumentKey]
+                values[otherArgumentKey],
               );
 
               const method = `${prefix}${pascalCase(singular(other))}`;
@@ -273,7 +273,7 @@ const build = db => {
       new GraphQLSchema({
         query,
         mutation,
-      })
+      }),
     );
   });
 };

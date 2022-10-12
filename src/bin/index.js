@@ -2,7 +2,7 @@
 
 import fs from 'fs';
 import express from 'express';
-import graphqlHTTP from 'express-graphql';
+import { graphqlHTTP } from 'express-graphql';
 import cors from 'cors';
 import commandLineArgs from 'command-line-args';
 import commandLineUsage from 'command-line-usage';
@@ -13,7 +13,7 @@ import {
   buildSchemaFromInfile,
 } from '../builders/schema';
 
-const FilePath = path => {
+const FilePath = (path) => {
   if (!fs.existsSync(path)) {
     console.log('');
     console.error(` > File does not exist: ${path}`);
@@ -88,7 +88,7 @@ const promise = options.infile
   : buildSchemaFromDatabase(options.db);
 
 if (options.schema) {
-  promise.then(schema => process.stdout.write(printSchema(schema)));
+  promise.then((schema) => process.stdout.write(printSchema(schema)));
 } else {
   const app = express();
 
@@ -99,18 +99,18 @@ if (options.schema) {
   console.log('');
   console.log(` > ${message}`);
 
-  promise.then(schema => {
+  promise.then((schema) => {
     app.use(
       '/graphql',
       cors(),
       graphqlHTTP({
         schema,
         graphiql: options.graphiql,
-      })
+      }),
     );
 
     app.listen(options.port, () =>
-      console.log(` > Running at http://localhost:${options.port}/graphql`)
+      console.log(` > Running at http://localhost:${options.port}/graphql`),
     );
   });
 }

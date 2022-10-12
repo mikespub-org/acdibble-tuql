@@ -1,16 +1,16 @@
 import { attributeFields } from 'graphql-sequelize';
 import { singular } from 'pluralize';
 import { GraphQLNonNull } from 'graphql';
-import camelcase from 'camelcase';
+import camelcase from '../utils/camelcase';
 
-export const getPkFieldKey = model => {
-  return Object.keys(model.rawAttributes).find(key => {
+export const getPkFieldKey = (model) => {
+  return Object.keys(model.rawAttributes).find((key) => {
     const attr = model.rawAttributes[key];
     return attr.primaryKey;
   });
 };
 
-export const makeCreateArgs = model => {
+export const makeCreateArgs = (model) => {
   const fields = attributeFields(model);
   const pk = getPkFieldKey(model);
 
@@ -19,7 +19,7 @@ export const makeCreateArgs = model => {
   return fields;
 };
 
-export const makeUpdateArgs = model => {
+export const makeUpdateArgs = (model) => {
   const fields = attributeFields(model);
 
   return Object.keys(fields).reduce((acc, key) => {
@@ -34,7 +34,7 @@ export const makeUpdateArgs = model => {
   }, fields);
 };
 
-export const makeDeleteArgs = model => {
+export const makeDeleteArgs = (model) => {
   const fields = attributeFields(model);
   const pk = getPkFieldKey(model);
 
