@@ -5,3 +5,8 @@ dist
 coverage
 infile.sql
 .DS_Store
+.yarn/
+#!.yarn/releases
+#!.yarn/plugins
+.yarnrc.yml
+.pnp.*
