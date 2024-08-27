@@ -1,6 +1,6 @@
 {
-  "name": "@acdibble/tuql",
-  "version": "2.0.1",
+  "name": "@mikespub/tuql",
+  "version": "2.1.0",
   "description": "",
   "main": "dist/index.js",
   "bin": "dist/bin/index.js",

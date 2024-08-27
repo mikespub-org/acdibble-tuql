@@ -5,32 +5,6 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
-"@acdibble/tuql@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "@acdibble/tuql@workspace:."
-  dependencies:
-    "@babel/cli": "npm:^7.24.8"
-    "@babel/core": "npm:^7.25.2"
-    "@babel/preset-env": "npm:^7.25.4"
-    babel-jest: "npm:^29.7.0"
-    command-line-args: "npm:^6.0.0"
-    command-line-usage: "npm:^7.0.3"
-    cors: "npm:^2.8.5"
-    express: "npm:^4.19.2"
-    express-graphql: "npm:^0.12.0"
-    graphql: "npm:^16.9.0"
-    graphql-relay: "npm:^0.10.2"
-    graphql-sequelize: "npm:^9.5.1"
-    jest: "npm:^29.7.0"
-    pluralize: "npm:^8.0.0"
-    prettier: "npm:^3.3.3"
-    sequelize: "npm:^6.37.3"
-    sqlite3: "npm:^5.1.7"
-  bin:
-    tuql: dist/bin/index.js
-  languageName: unknown
-  linkType: soft
-
 "@ampproject/remapping@npm:^2.2.0":
   version: 2.3.0
   resolution: "@ampproject/remapping@npm:2.3.0"
@@ -1725,6 +1699,32 @@ __metadata:
   checksum: 10c0/3d1ce6ebc69df9682a5a8896b414c6537e428a1d68b02fcc8363b04284a8ca0df04d0ee3013132252ab14f2527bc13bea6526a912ecb5658f0e39fd2860b4df4
   languageName: node
   linkType: hard
+
+"@mikespub/tuql@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@mikespub/tuql@workspace:."
+  dependencies:
+    "@babel/cli": "npm:^7.24.8"
+    "@babel/core": "npm:^7.25.2"
+    "@babel/preset-env": "npm:^7.25.4"
+    babel-jest: "npm:^29.7.0"
+    command-line-args: "npm:^6.0.0"
+    command-line-usage: "npm:^7.0.3"
+    cors: "npm:^2.8.5"
+    express: "npm:^4.19.2"
+    express-graphql: "npm:^0.12.0"
+    graphql: "npm:^16.9.0"
+    graphql-relay: "npm:^0.10.2"
+    graphql-sequelize: "npm:^9.5.1"
+    jest: "npm:^29.7.0"
+    pluralize: "npm:^8.0.0"
+    prettier: "npm:^3.3.3"
+    sequelize: "npm:^6.37.3"
+    sqlite3: "npm:^5.1.7"
+  bin:
+    tuql: dist/bin/index.js
+  languageName: unknown
+  linkType: soft
 
 "@nicolo-ribaudo/chokidar-2@npm:2.1.8-no-fsevents.3":
   version: 2.1.8-no-fsevents.3

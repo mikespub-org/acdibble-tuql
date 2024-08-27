@@ -1,14 +1,23 @@
-# tuql ![build status](https://github.com/bradleyboy/tuql/actions/workflows/nodejs.yml/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/bradleyboy/tuql/badge.svg?branch=master)](https://coveralls.io/github/bradleyboy/tuql?branch=master)
+# tuql
 
 _Pronounced: Too cool_
 
 **tuql** is a simple tool that turns a sanely formatted sqlite database into a graphql endpoint. It tries to infer relationships between objects, currently supporting `belongsTo`, `hasMany` and `belongsToMany`. It also forms the basic mutations necessary to create, update, and delete objects, as well as assoicate many-to-many relationships.
 
+## About this fork
+
+Based on https://github.com/acdibble/tuql with:
+- updated dependencies and yarn
+- BLOB mapped to String for SQLite
+
 ## Installing
 
-`npm install -g tuql`
+`npm install -g @mikespub/tuql`
 
 ## Using
+
+Note: if tuql doesn't work (for local build/install)
+`yarn exec tuql ...`
 
 `tuql --db path/to/database.sqlite`
 
