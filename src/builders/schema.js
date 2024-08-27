@@ -4,10 +4,12 @@ import {
   GraphQLObjectType,
   GraphQLList,
   GraphQLBoolean,
+  GraphQLString,
 } from 'graphql';
 import {
   resolver,
   attributeFields,
+  typeMapper,
   defaultListArgs,
   defaultArgs,
 } from 'graphql-sequelize';
@@ -37,6 +39,18 @@ const GenericResponseType = new GraphQLObjectType({
   fields: {
     success: { type: GraphQLBoolean },
   },
+});
+
+/**
+ * Map BLOB datatype to String for SQLite
+ */
+typeMapper.mapType((type) => {
+   //map blobs as strings
+   if (type instanceof Sequelize.BLOB) {
+     return GraphQLString
+   }
+   //use default for everything else
+   return false
 });
 
 export const buildSchemaFromDatabase = (databaseFile) => {
