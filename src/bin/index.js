@@ -2,7 +2,9 @@
 
 import fs from 'fs';
 import express from 'express';
-import { graphqlHTTP } from 'express-graphql';
+// migrate from express-graphql to graphql-http
+import { createHandler } from 'graphql-http/lib/use/express';
+import expressPlayground from 'graphql-playground-middleware-express';
 import cors from 'cors';
 import commandLineArgs from 'command-line-args';
 import commandLineUsage from 'command-line-usage';
@@ -103,12 +105,18 @@ if (options.schema) {
     app.use(
       '/graphql',
       cors(),
-      graphqlHTTP({
-        schema,
-        graphiql: options.graphiql,
+      createHandler({
+        schema
       }),
     );
-
+    if (options.graphiql) {
+      app.get(
+        '/playground',
+        expressPlayground({
+          endpoint: '/graphql',
+        }),
+      );
+    }
     app.listen(options.port, () =>
       console.log(` > Running at http://localhost:${options.port}/graphql`),
     );
