@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 import fs from 'fs';
+import path from 'path';
 import express from 'express';
 // migrate from express-graphql to graphql-http
 import { createHandler } from 'graphql-http/lib/use/express';
-import expressPlayground from 'graphql-playground-middleware-express';
 import cors from 'cors';
 import commandLineArgs from 'command-line-args';
 import commandLineUsage from 'command-line-usage';
@@ -110,12 +110,21 @@ if (options.schema) {
       }),
     );
     if (options.graphiql) {
-      app.get(
-        '/playground',
-        expressPlayground({
-          endpoint: '/graphql',
-        }),
-      );
+      // https://expressjs.com/en/advanced/developing-template-engines.html#developing-template-engines-for-express
+      app.engine('html', (filePath, options, callback) => { // define the template engine
+        fs.readFile(filePath, (err, content) => {
+          if (err) return callback(err)
+          // this is an extremely simple template engine
+          const rendered = content.toString()
+            .replace('${options.port}', `${options.port}`)
+          return callback(null, rendered)
+        })
+      });
+      app.set('views', path.join(__dirname, '..', 'views')); // specify the views directory
+      app.set('view engine', 'html'); // register the template engine
+      app.get('/graphiql', (req, res) => {
+        res.render('index', options)
+      });
     }
     app.listen(options.port, () =>
       console.log(` > Running at http://localhost:${options.port}/graphql`),

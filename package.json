@@ -1,13 +1,14 @@
 {
   "name": "@mikespub/tuql",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "",
   "main": "dist/index.js",
   "bin": "dist/bin/index.js",
   "scripts": {
     "start": "babel-node src/index.js",
     "build": "babel src --out-dir dist",
-    "prepublish": "npm run build",
+    "copy": "node -e \"require('fs').cpSync('./src/views', './dist/views', {recursive: true});\"",
+    "prepublish": "npm run build && npm run copy",
     "test": "jest",
     "test:watch": "jest --watch"
   },
@@ -24,7 +25,6 @@
     "express": "^4.21.2",
     "graphql": "^16.10.0",
     "graphql-http": "^1.22.3",
-    "graphql-playground-middleware-express": "^1.7.23",
     "graphql-relay": "^0.10.2",
     "graphql-sequelize": "^9.5.1",
     "pluralize": "^8.0.0",

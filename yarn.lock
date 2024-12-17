@@ -1874,7 +1874,6 @@ __metadata:
     express: "npm:^4.21.2"
     graphql: "npm:^16.10.0"
     graphql-http: "npm:^1.22.3"
-    graphql-playground-middleware-express: "npm:^1.7.23"
     graphql-relay: "npm:^0.10.2"
     graphql-sequelize: "npm:^9.5.1"
     jest: "npm:^29.7.0"
@@ -2830,13 +2829,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:^2.20.3":
-  version: 2.20.3
-  resolution: "commander@npm:2.20.3"
-  checksum: 10c0/74c781a5248c2402a0a3e966a0a2bba3c054aad144f5c023364be83265e796b20565aa9feff624132ff629aa64e16999fa40a743c10c12f7c61e96a794b99288
-  languageName: node
-  linkType: hard
-
 "commander@npm:^6.2.0":
   version: 6.2.1
   resolution: "commander@npm:6.2.1"
@@ -2948,13 +2940,6 @@ __metadata:
     shebang-command: "npm:^2.0.0"
     which: "npm:^2.0.1"
   checksum: 10c0/5738c312387081c98d69c98e105b6327b069197f864a60593245d64c8089c8a0a744e16349281210d56835bb9274130d825a78b2ad6853ca13cfbeffc0c31750
-  languageName: node
-  linkType: hard
-
-"cssfilter@npm:0.0.10":
-  version: 0.0.10
-  resolution: "cssfilter@npm:0.0.10"
-  checksum: 10c0/478a227a616fb6e9bb338eb95f690df141b86231ec737cbea574484f31a09a51db894b4921afc4987459dae08d584355fd689ff2a7a7c7a74de4bb4c072ce553
   languageName: node
   linkType: hard
 
@@ -3643,26 +3628,6 @@ __metadata:
   peerDependencies:
     graphql: ">=0.11 <=16"
   checksum: 10c0/32b726cab2628420fdd222a51faf8622e4893c98aca1a04a06d4f20cb59911ad99776c6ceddfa4d01bc14dc1bb0d159fcb5907c844b36ab2bb91e101a7e9b95c
-  languageName: node
-  linkType: hard
-
-"graphql-playground-html@npm:^1.6.30":
-  version: 1.6.30
-  resolution: "graphql-playground-html@npm:1.6.30"
-  dependencies:
-    xss: "npm:^1.0.6"
-  checksum: 10c0/32c87615b221610e57db41b68788bccf1e548ae66f38489521d4cfd2abf35666c76acf8250ce178f86b2bd825c2a9b083d496684abede1085847ca2dc7e71fb6
-  languageName: node
-  linkType: hard
-
-"graphql-playground-middleware-express@npm:^1.7.23":
-  version: 1.7.23
-  resolution: "graphql-playground-middleware-express@npm:1.7.23"
-  dependencies:
-    graphql-playground-html: "npm:^1.6.30"
-  peerDependencies:
-    express: ^4.16.2
-  checksum: 10c0/49fc327e770256490e701d8696d61403132956ebfebda9a531c134010149e4cff11697d4ddeea0f11dd0430c5f8b9b21ebdfc5bbbcf8bb5db30ac0628cd7f9a6
   languageName: node
   linkType: hard
 
@@ -6655,18 +6620,6 @@ __metadata:
     imurmurhash: "npm:^0.1.4"
     signal-exit: "npm:^3.0.7"
   checksum: 10c0/a2c282c95ef5d8e1c27b335ae897b5eca00e85590d92a3fd69a437919b7b93ff36a69ea04145da55829d2164e724bc62202cdb5f4b208b425aba0807889375c7
-  languageName: node
-  linkType: hard
-
-"xss@npm:^1.0.6":
-  version: 1.0.15
-  resolution: "xss@npm:1.0.15"
-  dependencies:
-    commander: "npm:^2.20.3"
-    cssfilter: "npm:0.0.10"
-  bin:
-    xss: bin/xss
-  checksum: 10c0/9b31bee62a208f78e2b7bc8154e3ee87d980f4661dc4ab850ce6f4de7bc50eb152f0bdc13fa759ff8ab6d9bfdf8c0d79cf9f6f86249872b92181912309bccd08
   languageName: node
   linkType: hard
 
