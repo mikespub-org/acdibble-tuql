@@ -4,7 +4,12 @@ import camelcase from './camelcase';
 export const isJoinTable = (tableName, tableList) => {
   const sides = tableName.split('_').map(plural);
 
-  if (sides.length !== 2) {
+  if (sides.length < 2) {
+    return false;
+  }
+
+  // support 'books_authors_links' format for join tables
+  if (sides.length > 2 && sides[2] !== 'links') {
     return false;
   }
 

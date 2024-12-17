@@ -120,10 +120,15 @@ const build = (db) => {
     }
 
     associations.forEach(({ from, to, type, options }) => {
-      const key = type === 'belongsTo' ? singular(to) : to;
-      const fromKey = findModelKey(from, models);
-      const toKey = findModelKey(to, models);
-      models[fromKey][key] = models[fromKey][type](models[toKey], options);
+      try {
+        const key = type === 'belongsTo' ? singular(to) : to;
+        const fromKey = findModelKey(from, models);
+        const toKey = findModelKey(to, models);
+        models[fromKey][key] = models[fromKey][type](models[toKey], options);
+      } catch (error) {
+        console.error(error);
+        return;
+      }
     });
 
     const types = {};
@@ -153,6 +158,9 @@ const build = (db) => {
           const fields = attributeFields(model);
 
           fieldAssociations.hasMany.forEach((associatedModel) => {
+            if (!associatedModel) {
+              return;
+            }
             fields[formatFieldName(associatedModel.name)] = {
               type: new GraphQLList(types[associatedModel.name]),
               args: defaultListArgs(model[associatedModel.name]),
@@ -161,6 +169,9 @@ const build = (db) => {
           });
 
           fieldAssociations.belongsTo.forEach((associatedModel) => {
+            if (!associatedModel) {
+              return;
+            }
             const fieldName = singular(associatedModel.name);
             fields[formatFieldName(fieldName)] = {
               type: types[associatedModel.name],
@@ -169,6 +180,9 @@ const build = (db) => {
           });
 
           fieldAssociations.belongsToMany.forEach((sides) => {
+            if (!sides) {
+              return;
+            }
             const [other] = sides.filter((side) => side !== model.name);
             fields[formatFieldName(other)] = {
               type: new GraphQLList(types[other]),
