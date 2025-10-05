@@ -10,3 +10,4 @@ infile.sql
 #!.yarn/plugins
 .yarnrc.yml
 .pnp.*
+schema.graphql

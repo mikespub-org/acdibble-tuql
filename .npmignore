@@ -3,8 +3,12 @@ src
 coverage
 .babelrc
 .editorconfig
+.github
 .prettierrc
 .travis.yml
+.yarn
+.yarnrc.yml
 database.sqlite
 infile.sql
 dist/__tests__
+schema.graphql
