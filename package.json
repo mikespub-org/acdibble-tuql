@@ -1,6 +1,6 @@
 {
   "name": "@mikespub/tuql",
-  "version": "2.6.4",
+  "version": "2.6.5",
   "description": "",
   "main": "dist/index.js",
   "bin": "dist/bin/index.js",
@@ -19,26 +19,26 @@
     "sqlite"
   ],
   "dependencies": {
-    "command-line-args": "^6.0.1",
-    "command-line-usage": "^7.0.3",
-    "cors": "^2.8.5",
+    "command-line-args": "^6.0.2",
+    "command-line-usage": "^7.0.4",
+    "cors": "^2.8.6",
     "express": "^5.2.1",
-    "graphql": "^16.12.0",
+    "graphql": "^16.14.2",
     "graphql-http": "^1.22.4",
     "graphql-relay": "^0.10.2",
     "graphql-sequelize": "^9.5.1",
     "pluralize": "^8.0.0",
-    "sequelize": "^6.37.7",
-    "sqlite3": "^5.1.7"
+    "sequelize": "^6.37.8",
+    "sqlite3": "^6.0.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.28.3",
-    "@babel/core": "^7.28.5",
-    "@babel/node": "^7.28.0",
-    "@babel/preset-env": "^7.28.5",
-    "babel-jest": "^30.2.0",
-    "jest": "^30.2.0",
-    "prettier": "^3.7.4"
+    "@babel/cli": "^7.29.7",
+    "@babel/core": "^7.29.7",
+    "@babel/node": "^7.29.7",
+    "@babel/preset-env": "^7.29.7",
+    "babel-jest": "^30.4.1",
+    "jest": "^30.4.2",
+    "prettier": "^3.8.4"
   },
   "jest": {
     "collectCoverage": true,
@@ -51,5 +51,5 @@
       "/dist/"
     ]
   },
-  "packageManager": "yarn@4.12.0"
+  "packageManager": "yarn@4.16.0"
 }
