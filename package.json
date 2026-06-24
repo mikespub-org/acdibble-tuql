@@ -23,7 +23,7 @@
     "command-line-usage": "^7.0.4",
     "cors": "^2.8.6",
     "express": "^5.2.1",
-    "graphql": "^16.14.2",
+    "graphql": "^17.0.1",
     "graphql-http": "^1.22.4",
     "graphql-relay": "^0.10.2",
     "graphql-sequelize": "^9.5.1",
@@ -51,5 +51,5 @@
       "/dist/"
     ]
   },
-  "packageManager": "yarn@4.16.0"
+  "packageManager": "yarn@4.17.0"
 }
